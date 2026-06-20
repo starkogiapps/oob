@@ -307,7 +307,7 @@ input[type=tel]::placeholder{color:var(--text-dim)}
     // Fetch RSS feed for Trending
     async function fetchRSSFeed() {
       try {
-        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/england/rss.xml?edition=uk');
+        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://api.foxsports.com/v2/content/optimized-rss?partnerKey=MB0Wehpmuj2lUhuRhQaafhBjAJqaPU244mlTDK1i&size=30&tags=soccer%2Fwc%2Fleague%2F12&_hp5_cdc=479232849%3B5113803018947285%3B3274496694894091%3B1781978726164%3B');
         const data = await response.json();
         
         if (data.items && data.items.length > 0) {
