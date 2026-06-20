@@ -307,7 +307,7 @@ input[type=tel]::placeholder{color:var(--text-dim)}
     // Fetch RSS feed for Trending
     async function fetchRSSFeed() {
       try {
-        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/sport/football/world_cup/rss.xml');
+        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/england/rss.xml?edition=uk');
         const data = await response.json();
         
         if (data.items && data.items.length > 0) {
