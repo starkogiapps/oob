@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 <title>Safaricom Connect — Captive Portal Preview</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3940256099942544" crossorigin="anonymous"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -23,37 +24,59 @@ body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',-ap
 @keyframes slide-up-sheet{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes checkmark-pop{0%{transform:scale(0) rotate(-45deg);opacity:0}50%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 @keyframes signal-bars{0%{height:0;opacity:0}100%{height:100%;opacity:1}}
+@keyframes bounce-in{0%{opacity:0;transform:scale(.8) translateY(20px)}60%{opacity:1;transform:scale(1.05)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes badge-pulse{0%,100%{transform:translateX(-50%) scale(1);box-shadow:0 2px 8px rgba(255,107,53,.4)}50%{transform:translateX(-50%) scale(1.08);box-shadow:0 4px 16px rgba(255,107,53,.7)}}
+@keyframes comet-burst{0%{width:20px;height:20px;opacity:1}100%{width:80px;height:80px;opacity:0;margin-left:-30px;margin-top:-30px}}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes glow-pulse{0%{box-shadow:0 0 0 0 rgba(48,181,74,.4)}50%{box-shadow:0 0 20px 10px rgba(48,181,74,0)}100%{box-shadow:0 0 0 0 rgba(48,181,74,0)}}
+@keyframes slide-left{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slide-right{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
 .animate-slide-up{animation:slide-up .5s ease forwards}
 .animate-fade-in{animation:fade-in .4s ease forwards}
+.animate-bounce-in{animation:bounce-in .6s cubic-bezier(.34,1.56,.64,1) forwards}
+.animate-slide-left{animation:slide-left .5s ease-out forwards}
+.animate-slide-right{animation:slide-right .5s ease-out forwards}
 .signal-ring{animation:signal-wave 2s ease-out infinite;position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(48,181,74,.5)}
 .signal-ring-2{animation:signal-wave 2s ease-out .7s infinite;position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(48,181,74,.35)}
 .signal-ring-3{animation:signal-wave 2s ease-out 1.4s infinite;position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(48,181,74,.2)}
 .grid-bg{background-image:linear-gradient(rgba(48,181,74,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(48,181,74,.04) 1px,transparent 1px);background-size:32px 32px}
-.offer-card{background:var(--bg-card);border:1px solid var(--border);transition:all .25s ease;border-radius:16px;padding:16px;cursor:pointer;text-align:left;width:100%;color:inherit;display:block}
-.offer-card:hover{background:var(--bg-card-hover);border-color:rgba(48,181,74,.45);box-shadow:0 0 32px var(--saf-green-glow);transform:translateY(-2px)}
-.offer-card.selected{border-color:var(--saf-green);box-shadow:0 0 0 2px rgba(48,181,74,.3),0 0 32px var(--saf-green-glow)}
-.btn-primary{background:linear-gradient(135deg,#30B54A 0%,#1A8F36 100%);color:white;font-weight:600;letter-spacing:.01em;transition:all .2s ease;box-shadow:0 4px 24px rgba(48,181,74,.35);border:none;cursor:pointer}
-.btn-primary:hover{box-shadow:0 6px 32px rgba(48,181,74,.55);transform:translateY(-1px)}
-.popular-badge{background:linear-gradient(135deg,#30B54A,#1A8F36);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;color:white}
-.feature-tag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;padding:4px 8px;border-radius:8px;background:rgba(255,255,255,.04);color:var(--text-muted);border:1px solid rgba(255,255,255,.06)}
-.stat-box{text-align:center}
-.stat-val{font-weight:700;font-size:.85rem;letter-spacing:-.01em;color:var(--saf-green)}
-.stat-lbl{font-size:.7rem;color:var(--text-dim);margin-top:2px}
-input[type=tel]{background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);caret-color:var(--saf-green);border-radius:12px;padding:0 16px;height:48px;font-size:.875rem;font-weight:500;outline:none;width:100%;font-family:inherit}
+.offer-card{background:var(--bg-card);border:1px solid var(--border);transition:all .3s cubic-bezier(.34,1.56,.64,1);border-radius:16px;padding:16px;cursor:pointer;text-align:left;width:100%;color:inherit;display:block;animation:bounce-in .6s ease-out backwards}
+.offer-card:nth-child(2){animation-delay:.1s}
+.offer-card:nth-child(3){animation-delay:.2s}
+.offer-card:nth-child(4){animation-delay:.3s}
+.offer-card:hover{background:var(--bg-card-hover);border-color:rgba(48,181,74,.45);box-shadow:0 0 32px var(--saf-green-glow);transform:translateY(-4px);animation:glow-pulse .4s ease-out}
+.offer-card.selected{border-color:var(--saf-green);box-shadow:0 0 0 2px rgba(48,181,74,.3),0 0 32px var(--saf-green-glow);animation:glow-pulse .6s ease-out}
+.btn-primary{background:linear-gradient(135deg,#30B54A 0%,#1A8F36 100%);color:white;font-weight:600;letter-spacing:.01em;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 24px rgba(48,181,74,.35);border:none;cursor:pointer}
+.btn-primary:hover{box-shadow:0 8px 32px rgba(48,181,74,.55);transform:translateY(-2px);animation:glow-pulse .4s ease-out}
+.btn-primary:active{transform:translateY(0);box-shadow:0 2px 16px rgba(48,181,74,.4)}
+.popular-badge{background:linear-gradient(135deg,#30B54A,#1A8F36);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;color:white;animation:bounce-in .5s ease-out}
+.feature-tag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;padding:4px 8px;border-radius:8px;background:rgba(255,255,255,.04);color:var(--text-muted);border:1px solid rgba(255,255,255,.06);transition:all .2s ease}
+.feature-tag:hover{background:rgba(48,181,74,.15);border-color:rgba(48,181,74,.3);transform:translateY(-1px)}
+.stat-box{text-align:center;animation:slide-up .6s ease-out backwards}
+.stat-box:nth-child(1){animation-delay:.2s}
+.stat-box:nth-child(2){animation-delay:.3s}
+.stat-val{font-weight:700;font-size:.85rem;letter-spacing:-.01em;color:var(--saf-green);transition:all .3s ease}
+.stat-lbl{font-size:.7rem;color:var(--text-dim);margin-top:2px;transition:color .3s ease}
+input[type=tel]{background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);caret-color:var(--saf-green);border-radius:12px;padding:0 16px;height:48px;font-size:.875rem;font-weight:500;outline:none;width:100%;font-family:inherit;transition:all .3s ease}
+input[type=tel]:focus{border-color:var(--saf-green);box-shadow:0 0 16px rgba(48,181,74,.3);background:var(--bg-card-hover)}
 input[type=tel]::placeholder{color:var(--text-dim)}
 .spinner{width:28px;height:28px;border:2.5px solid rgba(48,181,74,.2);border-top-color:var(--saf-green);border-radius:50%;animation:spin 0.8s linear infinite}
 .hidden{display:none}
-.bottom-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--bg-card);border-radius:20px 20px 0 0;padding:0;max-height:80vh;z-index:1000;box-shadow:0 -8px 32px rgba(0,0,0,.4);animation:slide-up-sheet .3s ease forwards;overflow-y:auto}
-.bottom-sheet.hidden{display:none}
+.bottom-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--bg-card);border-radius:20px 20px 0 0;padding:0;max-height:80vh;z-index:1000;box-shadow:0 -8px 32px rgba(0,0,0,.4);animation:slide-up-sheet .4s cubic-bezier(.34,1.56,.64,1) forwards;overflow-y:auto}
+.bottom-sheet.hidden{display:none;animation:slide-down .3s ease-out forwards}
 .sheet-header{padding:16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg-card)}
-.sheet-close{width:24px;height:24px;border:none;background:none;cursor:pointer;font-size:20px;color:var(--text-muted)}
-.payment-option{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--border);border-radius:12px;cursor:pointer;margin-bottom:10px;transition:all .2s;background:var(--bg-base)}
-.payment-option:hover{border-color:rgba(48,181,74,.45);box-shadow:0 0 16px var(--saf-green-glow)}
-.payment-option.selected{border-color:var(--saf-green);background:rgba(48,181,74,.1);box-shadow:0 0 0 2px rgba(48,181,74,.2)}
-.payment-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(48,181,74,.1);font-size:20px}
-.radio{width:20px;height:20px;border:2px solid var(--border);border-radius:50%;margin-left:auto;transition:all .2s}
-.payment-option.selected .radio{border-color:var(--saf-green);background:var(--saf-green)}
-.screen{display:none!important;position:absolute;inset:0}
+.sheet-close{width:24px;height:24px;border:none;background:none;cursor:pointer;font-size:20px;color:var(--text-muted);transition:all .2s ease;border-radius:8px}
+.sheet-close:hover{color:var(--saf-green);background:rgba(48,181,74,.1);transform:rotate(90deg)}
+.payment-option{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--border);border-radius:12px;cursor:pointer;margin-bottom:10px;transition:all .3s cubic-bezier(.34,1.56,.64,1);background:var(--bg-base);animation:slide-left .5s ease-out backwards}
+.payment-option:nth-child(1){animation-delay:.1s}
+.payment-option:nth-child(2){animation-delay:.2s}
+.payment-option:hover{border-color:rgba(48,181,74,.45);box-shadow:0 0 16px var(--saf-green-glow);transform:translateX(4px)}
+.payment-option.selected{border-color:var(--saf-green);background:rgba(48,181,74,.1);box-shadow:0 0 0 2px rgba(48,181,74,.2);animation:glow-pulse .4s ease-out}
+.payment-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(48,181,74,.1);font-size:20px;transition:all .3s ease}
+.payment-option:hover .payment-icon{background:rgba(48,181,74,.2);transform:scale(1.1)}
+.radio{width:20px;height:20px;border:2px solid var(--border);border-radius:50%;margin-left:auto;transition:all .3s cubic-bezier(.34,1.56,.64,1)}
+.payment-option.selected .radio{border-color:var(--saf-green);background:var(--saf-green);box-shadow:0 0 8px rgba(48,181,74,.5);animation:checkmark-pop .4s ease-out}
+.screen{display:none!important;position:absolute;inset:0;animation:fade-in .5s ease-out}
 .screen.active{display:flex!important;position:relative}
 </style>
 </head>
@@ -64,24 +87,45 @@ input[type=tel]::placeholder{color:var(--text-dim)}
   <div id="screen-main" class="screen active" style="flex:1;width:100%;display:flex;flex-direction:column;align-items:center;padding-bottom:90px">
     
     <!-- Top Banner Ad -->
-    <div style="width:100%;margin-bottom:28px;padding:12px 16px;background:linear-gradient(135deg,rgba(48,181,74,.1) 0%,rgba(48,181,74,.05) 100%);border:1px solid rgba(48,181,74,.3);border-radius:16px">
-      <div style="width:100%;max-width:380px;margin:0 auto">
-        <div style="font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px">Sponsored</div>
-        <div style="width:100%;min-height:120px;background:linear-gradient(135deg,#1a3a52 0%,#0f2438 100%);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px;text-align:center;box-shadow:inset 0 1px 2px rgba(255,255,255,.1)">
-          <div style="font-size:2rem;margin-bottom:8px">📢</div>
-          <div style="font-weight:700;font-size:.95rem;color:var(--saf-green);margin-bottom:6px">Premium Offer</div>
-          <div style="font-size:.75rem;color:var(--text-muted);line-height:1.4;margin-bottom:12px">Get more data with exclusive deals</div>
-          <div style="font-size:.7rem;color:var(--text-dim);padding:6px 12px;background:rgba(48,181,74,.2);border-radius:8px;border:1px solid rgba(48,181,74,.3)">Google AdSense Space</div>
+    <!-- TODO: Replace ca-pub-3940256099942544 and slot 6766222818 with your real AdSense publisher ID and slot ID -->
+    <div style="width:100%;margin-bottom:28px" id="ad-container">
+      <div style="font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px;padding:0 4px">Sponsored</div>
+      <!-- TODO: Replace with your real AdSense publisher ID and slot ID when going live -->
+      <!-- Google Test Ad: ca-pub-3940256099942544 / slot 6300978111 = Banner | 2934735716 = Rectangle -->
+      <ins class="adsbygoogle"
+           id="adsense-unit"
+           style="display:block;width:100%;min-height:100px;border-radius:16px;overflow:hidden"
+           data-ad-client="ca-pub-3940256099942544"
+           data-ad-slot="6300978111"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+
+      <!-- Fallback promo — shown if ad fails to load -->
+      <div id="ad-fallback" style="display:none;width:100%;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#1A6B28 0%,#0f3d18 100%);border:1px solid rgba(48,181,74,.3);cursor:pointer" onclick="selectOffer('monthly');document.getElementById('plans-modal').style.display='flex'">
+        <div style="padding:16px 20px;display:flex;align-items:center;gap:16px">
+          <div style="flex-shrink:0;width:52px;height:52px;border-radius:14px;background:rgba(48,181,74,.2);border:1px solid rgba(48,181,74,.35);display:flex;align-items:center;justify-content:center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#30B54A" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(168,255,62,.7);margin-bottom:3px">🔥 Best Value</div>
+            <div style="font-weight:800;font-size:1rem;color:white;margin-bottom:2px">Month Pass</div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.65)">10 GB · 30 days of browsing</div>
+          </div>
+          <div style="flex-shrink:0;text-align:right">
+            <div style="font-weight:800;font-size:1.1rem;color:#A8FF3E;letter-spacing:-.02em">KES 299</div>
+            <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-top:2px">Tap to select</div>
+          </div>
         </div>
+        <div style="height:3px;background:linear-gradient(90deg,#30B54A,#A8FF3E,#30B54A);animation:shimmer 2s linear infinite;background-size:200% 100%"></div>
       </div>
     </div>
 
     <!-- Network pill -->
     <div class="animate-fade-in" style="display:flex;align-items:center;gap:8px;padding:7px 16px;border-radius:40px;margin-bottom:28px;background:var(--saf-green-subtle);border:1px solid var(--border)">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#30B54A" stroke-width="2.5" stroke-linecap="round"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="#30B54A"/></svg>
-      <span style="font-size:.72rem;font-weight:600;color:var(--text-muted)">Safaricom_HotSpot_5G</span>
+      <span id="network-name" style="font-size:.72rem;font-weight:600;color:var(--text-muted)">Detecting network...</span>
       <span style="width:3px;height:3px;border-radius:50%;background:var(--text-dim)"></span>
-      <span style="font-size:.72rem;color:var(--text-dim)">Westgate Mall, Nairobi</span>
+      <span id="network-location" style="font-size:.72rem;color:var(--text-dim)">Nairobi</span>
     </div>
 
     <!-- Get Reconnected Carousel -->
@@ -91,11 +135,11 @@ input[type=tel]::placeholder{color:var(--text-dim)}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2" stroke-linecap="round"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="#7A95B4"/></svg>
           <p style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);margin:0">Get reconnected</p>
         </div>
-        <div style="font-size:.7rem;font-weight:600;color:var(--saf-green);cursor:pointer;padding:4px 8px;margin:0;white-space:nowrap" onclick="document.getElementById('plans-modal').style.display='flex'">View all →</div>
+        <div style="font-size:.7rem;font-weight:600;color:var(--saf-green);cursor:pointer;padding:6px 12px;margin:0;white-space:nowrap;border-radius:8px;transition:all .3s cubic-bezier(.34,1.56,.64,1);display:inline-flex;align-items:center;gap:4px" onmouseover="this.style.background='rgba(48,181,74,.1)';this.style.transform='translateX(4px)'" onmouseout="this.style.background='transparent';this.style.transform='translateX(0)'" onclick="document.getElementById('plans-modal').style.display='flex'">View all <span style="transition:transform .3s ease">→</span></div>
       </div>
       
       <div style="width:100%;overflow-x:auto;scroll-behavior:smooth;padding:0 16px;margin:0 -16px;padding-left:16px;padding-right:16px;-webkit-overflow-scrolling:touch" id="carousel-scroll">
-        <div style="display:flex;gap:12px;width:max-content;padding:16px;align-items:flex-end;justify-content:center">
+        <div style="display:flex;gap:12px;width:max-content;padding:24px 16px;align-items:center;justify-content:center">
           <!-- Spacer -->
           <div style="width:90px;min-width:90px;display:flex;align-items:center;justify-content:center"></div>
           <!-- Free -->
@@ -108,16 +152,6 @@ input[type=tel]::placeholder{color:var(--text-dim)}
             <div style="font-weight:700;font-size:.9rem;letter-spacing:-.02em;color:var(--text-primary);margin-top:6px">FREE</div>
           </div>
 
-          <!-- Daily -->
-          <div id="bundle-daily" onclick="selectOffer('daily')" style="width:140px;min-width:140px;background:var(--bg-card);border:2px solid var(--saf-green);border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);transform:scale(1.12) translateY(-8px);box-shadow:0 8px 24px rgba(48,181,74,.25)">
-            <div style="width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(48,181,74,.15);border:1px solid rgba(48,181,74,.3);margin:0 auto 8px">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#30B54A" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </div>
-            <div style="font-weight:600;font-size:.75rem;color:var(--text-primary);margin-bottom:2px">Day Pass</div>
-            <span style="font-size:.65rem;color:var(--text-muted)">200 MB</span>
-            <div style="font-weight:700;font-size:.9rem;letter-spacing:-.02em;color:var(--saf-green);margin-top:6px">KES 20</div>
-          </div>
-
           <!-- Weekly -->
           <div id="bundle-weekly" onclick="selectOffer('weekly')" style="width:140px;min-width:140px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);transform:scale(1)">
             <div style="width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);margin:0 auto 8px">
@@ -126,6 +160,18 @@ input[type=tel]::placeholder{color:var(--text-dim)}
             <div style="font-weight:600;font-size:.75rem;color:var(--text-primary);margin-bottom:2px">Week Pass</div>
             <span style="font-size:.65rem;color:var(--text-muted)">1 GB</span>
             <div style="font-weight:700;font-size:.9rem;letter-spacing:-.02em;color:var(--text-primary);margin-top:6px">KES 99</div>
+          </div>
+
+          <!-- Daily (CENTER - Most Popular) -->
+          <div id="bundle-daily" onclick="selectOffer('daily')" style="width:140px;min-width:140px;background:linear-gradient(135deg,rgba(48,181,74,.12),rgba(48,181,74,.04));border:2px solid var(--saf-green);border-radius:12px;padding:12px;text-align:center;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);transform:scale(1.12);box-shadow:0 8px 24px rgba(48,181,74,.25);position:relative;overflow:visible">
+            <!-- Pulsing badge -->
+            <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#FF6B35,#F7C59F);color:white;font-size:.55rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px;white-space:nowrap;animation:badge-pulse 2s ease-in-out infinite;box-shadow:0 2px 8px rgba(255,107,53,.4)">🔥 Most Popular</div>
+            <div style="width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(48,181,74,.15);border:1px solid rgba(48,181,74,.3);margin:0 auto 8px">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#30B54A" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div style="font-weight:600;font-size:.75rem;color:var(--text-primary);margin-bottom:2px">Day Pass</div>
+            <span style="font-size:.65rem;color:var(--text-muted)">200 MB</span>
+            <div style="font-weight:700;font-size:.9rem;letter-spacing:-.02em;color:var(--saf-green);margin-top:6px">KES 20</div>
           </div>
 
           <!-- Monthly -->
@@ -165,55 +211,52 @@ input[type=tel]::placeholder{color:var(--text-dim)}
     </div>
 
     <!-- Plans Modal (Full View) -->
-    <div id="plans-modal" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:2000;padding:16px" onclick="if(event.target.id === 'plans-modal') document.getElementById('plans-modal').style.display='none'">
-      <div style="width:100%;max-width:400px;background:var(--bg-base);border-radius:20px;padding:24px;max-height:80vh;overflow-y:auto" onclick="event.stopPropagation()">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+    <div id="plans-modal" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:2000;padding:16px;animation:fade-in .3s ease-out;backdrop-filter:blur(4px)" onclick="if(event.target.id === 'plans-modal') document.getElementById('plans-modal').style.display='none'">
+      <div style="width:100%;max-width:400px;background:var(--bg-base);border-radius:20px;padding:24px;max-height:80vh;overflow-y:auto;animation:slide-up .5s cubic-bezier(.34,1.56,.64,1) forwards;box-shadow:0 20px 60px rgba(0,0,0,.6)" onclick="event.stopPropagation()">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;animation:slide-left .4s ease-out backwards">
           <h2 style="font-size:1.1rem;font-weight:800;color:var(--text-primary);margin:0">Select Plan</h2>
-          <button onclick="document.getElementById('plans-modal').style.display='none'" style="background:none;border:none;font-size:28px;color:var(--text-muted);cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center">×</button>
+          <button onclick="document.getElementById('plans-modal').style.display='none'" style="background:none;border:none;font-size:28px;color:var(--text-muted);cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:all .2s ease;hover-effect" onmouseover="this.style.background='rgba(48,181,74,.1)';this.style.transform='rotate(90deg)'" onmouseout="this.style.background='transparent';this.style.transform='rotate(0)'" >×</button>
         </div>
         
         <div style="display:flex;flex-direction:column;gap:12px">
-          <div onclick="selectOffer('free');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .2s">
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-              <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Free Preview</div><span style="font-size:.75rem;color:var(--text-muted)">50 MB · 15 min</span></div>
-              <div style="font-weight:700;color:var(--text-primary)">FREE</div>
+          <div onclick="selectOffer('free');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);animation:slide-up .5s ease-out backwards .1s;display:flex;align-items:center;gap:12px" onmouseover="this.style.background='var(--bg-card-hover)';this.style.borderColor='rgba(48,181,74,.45)';this.style.transform='translateX(4px)'" onmouseout="this.style.background='var(--bg-card)';this.style.borderColor='var(--border)';this.style.transform='translateX(0)'">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Free Preview</div><span style="font-size:.75rem;color:var(--text-muted)">50 MB · 15 min</span></div>
+            <div style="font-weight:700;color:var(--text-primary)">FREE</div>
+          </div>
+          <div onclick="selectOffer('daily');document.getElementById('plans-modal').style.display='none'" style="position:relative;background:linear-gradient(135deg,rgba(48,181,74,.15),rgba(48,181,74,.05));border:2px solid var(--saf-green);border-radius:12px;padding:16px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);animation:slide-up .5s ease-out backwards .2s;display:flex;align-items:center;gap:12px;box-shadow:0 0 24px rgba(48,181,74,.25)" onmouseover="this.style.boxShadow='0 0 32px rgba(48,181,74,.45)';this.style.transform='translateX(4px) scale(1.02)'" onmouseout="this.style.boxShadow='0 0 24px rgba(48,181,74,.25)';this.style.transform='translateX(0) scale(1)'">
+            <!-- Featured banner -->
+            <div style="position:absolute;top:-1px;right:12px;background:linear-gradient(135deg,#FF6B35,#F7C59F);color:white;font-size:.55rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:0 0 8px 8px;animation:badge-pulse 2s ease-in-out infinite;box-shadow:0 2px 8px rgba(255,107,53,.4)">🔥 Most Popular</div>
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(48,181,74,.2);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#30B54A" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <div style="flex:1">
+              <div style="font-weight:700;color:var(--text-primary)">Day Pass</div>
+              <span style="font-size:.75rem;color:var(--text-muted)">200 MB · 24h</span>
+              <div style="font-size:.65rem;color:#FF6B35;font-weight:600;margin-top:3px">⚡ Get connected in seconds</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-weight:800;color:var(--saf-green);font-size:1rem">KES 20</div>
+              <div style="font-size:.6rem;color:var(--text-muted)">Best deal</div>
             </div>
           </div>
-          <div onclick="selectOffer('daily');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:2px solid var(--saf-green);border-radius:12px;padding:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:40px;height:40px;border-radius:10px;background:rgba(48,181,74,.15);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#30B54A" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-              <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Day Pass</div><span style="font-size:.75rem;color:var(--text-muted)">200 MB · 24h</span></div>
-              <div style="font-weight:700;color:var(--saf-green)">KES 20</div>
-            </div>
+          <div onclick="selectOffer('weekly');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);animation:slide-up .5s ease-out backwards .3s;display:flex;align-items:center;gap:12px" onmouseover="this.style.background='var(--bg-card-hover)';this.style.borderColor='rgba(48,181,74,.45)';this.style.transform='translateX(4px)'" onmouseout="this.style.background='var(--bg-card)';this.style.borderColor='var(--border)';this.style.transform='translateX(0)'">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+            <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Week Pass</div><span style="font-size:.75rem;color:var(--text-muted)">1 GB · 7 days</span></div>
+            <div style="font-weight:700;color:var(--text-primary)">KES 99</div>
           </div>
-          <div onclick="selectOffer('weekly');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
-              <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Week Pass</div><span style="font-size:.75rem;color:var(--text-muted)">1 GB · 7 days</span></div>
-              <div style="font-weight:700;color:var(--text-primary)">KES 99</div>
-            </div>
+          <div onclick="selectOffer('monthly');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);animation:slide-up .5s ease-out backwards .4s;display:flex;align-items:center;gap:12px" onmouseover="this.style.background='var(--bg-card-hover)';this.style.borderColor='rgba(48,181,74,.45)';this.style.transform='translateX(4px)'" onmouseout="this.style.background='var(--bg-card)';this.style.borderColor='var(--border)';this.style.transform='translateX(0)'">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Month Pass</div><span style="font-size:.75rem;color:var(--text-muted)">10 GB · 30 days</span></div>
+            <div style="font-weight:700;color:var(--text-primary)">KES 299</div>
           </div>
-          <div onclick="selectOffer('monthly');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-              <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Month Pass</div><span style="font-size:.75rem;color:var(--text-muted)">10 GB · 30 days</span></div>
-              <div style="font-weight:700;color:var(--text-primary)">KES 299</div>
-            </div>
+          <div onclick="selectOffer('lite');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);animation:slide-up .5s ease-out backwards .5s;display:flex;align-items:center;gap:12px" onmouseover="this.style.background='var(--bg-card-hover)';this.style.borderColor='rgba(48,181,74,.45)';this.style.transform='translateX(4px)'" onmouseout="this.style.background='var(--bg-card)';this.style.borderColor='var(--border)';this.style.transform='translateX(0)'">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Lite Streaming</div><span style="font-size:.75rem;color:var(--text-muted)">500 MB · 3 days</span></div>
+            <div style="font-weight:700;color:var(--text-primary)">KES 49</div>
           </div>
-          <div onclick="selectOffer('lite');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-              <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Lite Streaming</div><span style="font-size:.75rem;color:var(--text-muted)">500 MB · 3 days</span></div>
-              <div style="font-weight:700;color:var(--text-primary)">KES 49</div>
-            </div>
-          </div>
-          <div onclick="selectOffer('power');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer">
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-              <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Power Bundle</div><span style="font-size:.75rem;color:var(--text-muted)">25 GB · 30 days</span></div>
-              <div style="font-weight:700;color:var(--text-primary)">KES 699</div>
-            </div>
+          <div onclick="selectOffer('power');document.getElementById('plans-modal').style.display='none'" style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1);animation:slide-up .5s ease-out backwards .6s;display:flex;align-items:center;gap:12px" onmouseover="this.style.background='var(--bg-card-hover)';this.style.borderColor='rgba(48,181,74,.45)';this.style.transform='translateX(4px)'" onmouseout="this.style.background='var(--bg-card)';this.style.borderColor='var(--border)';this.style.transform='translateX(0)'">
+            <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A95B4" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <div style="flex:1"><div style="font-weight:600;color:var(--text-primary)">Power Bundle</div><span style="font-size:.75rem;color:var(--text-muted)">25 GB · 30 days</span></div>
+            <div style="font-weight:700;color:var(--text-primary)">KES 699</div>
           </div>
         </div>
       </div>
@@ -250,14 +293,6 @@ input[type=tel]::placeholder{color:var(--text-dim)}
       <!-- Content Container -->
       <div id="discover-content" style="width:100%;min-height:280px"></div>
     </div>
-  </div>
-
-  <!-- Network pill -->
-  <div class="animate-fade-in" style="display:flex;align-items:center;gap:8px;padding:7px 16px;border-radius:40px;margin-bottom:28px;background:var(--saf-green-subtle);border:1px solid var(--border)">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#30B54A" stroke-width="2.5" stroke-linecap="round"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="#30B54A"/></svg>
-    <span style="font-size:.72rem;font-weight:600;color:var(--text-muted)">Safaricom_HotSpot_5G</span>
-    <span style="width:3px;height:3px;border-radius:50%;background:var(--text-dim)"></span>
-    <span style="font-size:.72rem;color:var(--text-dim)">Westgate Mall, Nairobi</span>
   </div>
 
   <!-- Fixed Pay & Connect Button -->
@@ -390,6 +425,130 @@ input[type=tel]::placeholder{color:var(--text-dim)}
     // Initialize with games content
     switchDiscoverTab('games');
 
+    // Scroll carousel to center the Day Pass on load
+    setTimeout(() => {
+      selectOffer('daily'); // auto-select Most Popular
+    }, 300);
+
+    // Comet effect: shoots from selected card to the Get Connected button
+    function launchComet(plan) {
+      const card = document.getElementById('bundle-' + plan);
+      const btn  = document.getElementById('connect-btn');
+      if (!card || !btn) return;
+
+      const cardRect = card.getBoundingClientRect();
+      const btnRect  = btn.getBoundingClientRect();
+
+      const startX = cardRect.left + cardRect.width / 2;
+      const startY = cardRect.top  + cardRect.height / 2;
+      const endX   = btnRect.left  + btnRect.width / 2;
+      const endY   = btnRect.top   + btnRect.height / 2;
+
+      // Control point arcs up and toward center
+      const ctrlX  = (startX + endX) / 2;
+      const ctrlY  = Math.min(startY, endY) - 100;
+
+      // --- HEAD ---
+      const head = document.createElement('div');
+      head.style.cssText = `
+        position:fixed;z-index:99999;pointer-events:none;
+        width:16px;height:16px;border-radius:50%;
+        background:white;
+        box-shadow:0 0 8px 4px #30B54A, 0 0 20px 8px rgba(48,181,74,.6);
+        transform:translate(-50%,-50%);
+        left:${startX}px;top:${startY}px;
+      `;
+      document.body.appendChild(head);
+
+      // --- TAIL PARTICLES ---
+      const tailCount = 8;
+      const tails = Array.from({length: tailCount}, (_, i) => {
+        const t = document.createElement('div');
+        const size = Math.max(3, 12 - i * 1.2);
+        t.style.cssText = `
+          position:fixed;z-index:99998;pointer-events:none;
+          width:${size}px;height:${size}px;border-radius:50%;
+          background:rgba(48,181,74,${0.9 - i * 0.1});
+          box-shadow:0 0 6px rgba(48,181,74,.5);
+          transform:translate(-50%,-50%);
+          left:${startX}px;top:${startY}px;
+        `;
+        document.body.appendChild(t);
+        return t;
+      });
+
+      const duration = 550;
+      const startTime = performance.now();
+      const history = [];
+
+      function bezier(t) {
+        const mt = 1 - t;
+        return {
+          x: mt*mt*startX + 2*mt*t*ctrlX + t*t*endX,
+          y: mt*mt*startY + 2*mt*t*ctrlY + t*t*endY,
+        };
+      }
+
+      function ease(t) {
+        return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+      }
+
+      function animate(now) {
+        const p = Math.min((now - startTime) / duration, 1);
+        const ep = ease(p);
+        const pos = bezier(ep);
+
+        head.style.left = pos.x + 'px';
+        head.style.top  = pos.y + 'px';
+        head.style.opacity = p < 0.9 ? '1' : String(1 - (p - 0.9) / 0.1);
+
+        history.unshift({ x: pos.x, y: pos.y });
+        if (history.length > tailCount * 3) history.pop();
+
+        tails.forEach((t, i) => {
+          const hIdx = Math.min((i + 1) * 3, history.length - 1);
+          const hp   = history[hIdx] || { x: pos.x, y: pos.y };
+          t.style.left    = hp.x + 'px';
+          t.style.top     = hp.y + 'px';
+          t.style.opacity = String(Math.max(0, (0.8 - i * 0.09) * (1 - p * 0.5)));
+        });
+
+        if (p < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          // Burst at button
+          head.remove();
+          tails.forEach(t => t.remove());
+
+          // Ripple burst
+          for (let i = 0; i < 3; i++) {
+            const ring = document.createElement('div');
+            ring.style.cssText = `
+              position:fixed;z-index:99999;pointer-events:none;
+              width:20px;height:20px;border-radius:50%;
+              border:2px solid rgba(48,181,74,${0.8 - i * 0.2});
+              transform:translate(-50%,-50%);
+              left:${endX}px;top:${endY}px;
+              animation:comet-burst .4s ease-out ${i * 0.08}s forwards;
+            `;
+            document.body.appendChild(ring);
+            setTimeout(() => ring.remove(), 500 + i * 80);
+          }
+
+          // Flash button
+          btn.style.transition = 'box-shadow .15s ease, transform .15s ease';
+          btn.style.boxShadow  = '0 0 0 8px rgba(48,181,74,.4), 0 0 40px rgba(48,181,74,.7)';
+          btn.style.transform  = 'scale(1.05)';
+          setTimeout(() => {
+            btn.style.boxShadow = '';
+            btn.style.transform = '';
+          }, 350);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
     function selectOffer(plan) {
       const plans = {
         free: { name: 'Free Preview', price: 'FREE', priceNum: 0 },
@@ -405,17 +564,52 @@ input[type=tel]::placeholder{color:var(--text-dim)}
       const selected = plans[plan];
       const buttonText = document.getElementById('connect-btn-text');
       
-      if (!buttonText) return;
+      if (buttonText) {
+        if (selected.priceNum === 0) {
+          buttonText.textContent = 'Get Connected · FREE';
+        } else {
+          buttonText.textContent = 'Get Connected · KES ' + selected.price;
+        }
+      }
       
-      // Update button text
-      if (selected.priceNum === 0) {
-        buttonText.textContent = 'Get Connected · FREE';
-      } else {
-        buttonText.textContent = 'Get Connected · KES ' + selected.price;
+      // Update all carousel card sizes — selected is larger, others uniform
+      const allIds = ['free', 'daily', 'weekly', 'monthly', 'lite', 'power'];
+      allIds.forEach(id => {
+        const card = document.getElementById('bundle-' + id);
+        if (!card) return;
+        if (id === plan) {
+          card.style.transform = 'scale(1.12)';
+          card.style.border = '2px solid var(--saf-green)';
+          card.style.boxShadow = '0 8px 24px rgba(48,181,74,.25)';
+          card.style.background = 'linear-gradient(135deg,rgba(48,181,74,.12),rgba(48,181,74,.04))';
+        } else {
+          card.style.transform = 'scale(0.92)';
+          card.style.border = '1px solid var(--border)';
+          card.style.boxShadow = 'none';
+          card.style.background = 'var(--bg-card)';
+        }
+      });
+
+      // Scroll selected card to center
+      setTimeout(() => {
+        const carousel = document.getElementById('carousel-scroll');
+        const card = document.getElementById('bundle-' + plan);
+        if (carousel && card) {
+          const cardRect = card.getBoundingClientRect();
+          const carouselRect = carousel.getBoundingClientRect();
+          const targetScroll = carousel.scrollLeft + (cardRect.left - carouselRect.left) - (carouselRect.width / 2) + (cardRect.width / 2);
+          carousel.scrollTo({ left: targetScroll, behavior: 'smooth' });
+        }
+      }, 50);
+
+      // Launch comet from card to button (skip on auto-init)
+      if (currentOffer !== undefined) {
+        setTimeout(() => launchComet(plan), 100);
       }
       
       // Store selected plan
       window.selectedPlan = { plan: plan, name: selected.name, price: selected.price };
+      currentOffer = plan;
     }
   </script>
 
@@ -461,10 +655,15 @@ input[type=tel]::placeholder{color:var(--text-dim)}
     <button class="sheet-close" onclick="closePaymentSheet()">✕</button>
   </div>
 
-  <div style="padding:16px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:12px">
+  <!-- Stats -->
+  <div style="padding:16px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
     <div class="stat-box">
       <div class="stat-val" id="sheet-data">200 MB</div>
       <div class="stat-lbl">Data</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-val" id="sheet-validity">24 hrs</div>
+      <div class="stat-lbl">Valid For</div>
     </div>
     <div class="stat-box">
       <div class="stat-val" id="sheet-price">KES 20</div>
@@ -472,11 +671,21 @@ input[type=tel]::placeholder{color:var(--text-dim)}
     </div>
   </div>
 
+  <!-- Auto-detected phone notice -->
+  <div style="padding:16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px">
+    <div style="width:40px;height:40px;border-radius:10px;background:rgba(48,181,74,.1);border:1px solid rgba(48,181,74,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📱</div>
+    <div>
+      <div style="font-size:.8rem;font-weight:600;color:var(--text-primary)" id="sheet-msisdn">+254 7XX XXX XXX</div>
+      <div style="font-size:.68rem;color:var(--saf-green);display:flex;align-items:center;gap:4px;margin-top:2px">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#30B54A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        Auto-detected via network
+      </div>
+    </div>
+  </div>
+
   <!-- Payment Options -->
   <div style="padding:16px">
     <p style="font-size:.75rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px">Pay with</p>
-
-    <!-- M-PESA -->
     <div class="payment-option selected" id="payment-mpesa" onclick="selectPayment('mpesa')">
       <div class="payment-icon">📱</div>
       <div style="flex:1">
@@ -485,8 +694,6 @@ input[type=tel]::placeholder{color:var(--text-dim)}
       </div>
       <div class="radio" style="border-color:var(--saf-green);background:var(--saf-green)"></div>
     </div>
-
-    <!-- AIRTIME -->
     <div class="payment-option" id="payment-airtime" onclick="selectPayment('airtime')">
       <div class="payment-icon">📡</div>
       <div style="flex:1">
@@ -497,20 +704,62 @@ input[type=tel]::placeholder{color:var(--text-dim)}
     </div>
   </div>
 
-  <!-- M-PESA Phone Input -->
-  <div id="mpesa-section" style="padding:0 16px;margin-bottom:16px">
-    <label style="display:block;font-size:.72rem;font-weight:600;color:var(--text-muted);margin-bottom:8px">Phone Number</label>
-    <div style="display:flex;gap:8px">
-      <div style="display:flex;align-items:center;padding:0 12px;border-radius:12px;height:48px;background:var(--bg-card);border:1px solid var(--border);font-size:.875rem;font-weight:600;color:var(--text-muted);white-space:nowrap">🇰🇪 +254</div>
-      <input type="tel" placeholder="7XX XXX XXX" id="phone-input" maxlength="9" style="flex:1"/>
-    </div>
-    <p style="font-size:.7rem;margin-top:8px;color:var(--text-dim)">STK push will arrive in seconds</p>
-  </div>
-
   <!-- Action Buttons -->
   <div style="padding:0 16px 20px;padding-bottom:max(20px,env(safe-area-inset-bottom))">
-    <button class="btn-primary" onclick="handlePay()" style="width:100%;border-radius:16px;padding:15px;font-size:.875rem;margin-bottom:10px">Confirm Payment →</button>
+    <button class="btn-primary" id="confirm-pay-btn" onclick="handlePay()" style="width:100%;border-radius:16px;padding:15px;font-size:.875rem;margin-bottom:10px">Confirm Payment →</button>
     <button onclick="closePaymentSheet()" style="width:100%;border-radius:12px;padding:12px;font-size:.875rem;font-weight:500;color:var(--text-muted);background:transparent;border:none;cursor:pointer">← Back</button>
+  </div>
+
+  <!-- Progress Loader (hidden until payment) -->
+  <div id="pay-loader" style="display:none;position:absolute;inset:0;background:var(--bg-card);border-radius:20px 20px 0 0;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center">
+    
+    <!-- Spinner ring -->
+    <div style="position:relative;width:80px;height:80px;margin:0 auto 24px">
+      <svg width="80" height="80" viewBox="0 0 80 80" style="position:absolute;inset:0;animation:spin 1.4s linear infinite">
+        <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(48,181,74,.15)" stroke-width="6"/>
+        <circle cx="40" cy="40" r="34" fill="none" stroke="#30B54A" stroke-width="6" stroke-linecap="round"
+          stroke-dasharray="60 154" stroke-dashoffset="0" style="filter:drop-shadow(0 0 6px #30B54A)"/>
+      </svg>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px">📱</div>
+    </div>
+
+    <!-- Steps -->
+    <div id="loader-step" style="font-size:.95rem;font-weight:700;color:var(--text-primary);margin-bottom:8px">Sending STK Push...</div>
+    <div id="loader-sub" style="font-size:.75rem;color:var(--text-muted);margin-bottom:28px">Check your phone to confirm</div>
+
+    <!-- Progress bar -->
+    <div style="width:100%;height:4px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:24px">
+      <div id="progress-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#30B54A,#A8FF3E);border-radius:4px;transition:width .4s ease"></div>
+    </div>
+
+    <!-- Steps list -->
+    <div style="width:100%;display:flex;flex-direction:column;gap:10px">
+      <div id="step-1" style="display:flex;align-items:center;gap:10px;opacity:.4;transition:opacity .3s">
+        <div id="step-1-icon" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">1</div>
+        <span id="step-1-label" style="font-size:.8rem;color:var(--text-muted)">Initiating payment</span>
+      </div>
+      <div id="step-2" style="display:flex;align-items:center;gap:10px;opacity:.4;transition:opacity .3s">
+        <div id="step-2-icon" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">2</div>
+        <span id="step-2-label" style="font-size:.8rem;color:var(--text-muted)">Payment confirmed</span>
+      </div>
+      <div id="step-3" style="display:flex;align-items:center;gap:10px;opacity:.4;transition:opacity .3s">
+        <div id="step-3-icon" style="width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">3</div>
+        <span id="step-3-label" style="font-size:.8rem;color:var(--text-muted)">Activating your bundle</span>
+      </div>
+    </div>
+
+    <!-- Success state (hidden until done) -->
+    <div id="loader-success" style="display:none;flex-direction:column;align-items:center;gap:16px;width:100%">
+      <div style="width:64px;height:64px;border-radius:50%;background:rgba(48,181,74,.15);border:2px solid var(--saf-green);display:flex;align-items:center;justify-content:center;font-size:30px;animation:checkmark-pop .4s ease-out">✓</div>
+      <div>
+        <div style="font-size:1.1rem;font-weight:800;color:var(--text-primary);margin-bottom:4px">You're Connected! 🎉</div>
+        <div style="font-size:.78rem;color:var(--text-muted)">Bundle activated successfully</div>
+      </div>
+      <button onclick="window.location.href='https://baze.co.ke'" style="width:100%;background:linear-gradient(135deg,#30B54A 0%,#1A8F36 100%);color:white;border:none;padding:16px;border-radius:16px;font-weight:700;font-size:.95rem;cursor:pointer;box-shadow:0 4px 24px rgba(48,181,74,.4);animation:bounce-in .5s ease-out">
+        🎬 Start Browsing on Baze →
+      </button>
+      <button onclick="closePaymentSheet()" style="background:none;border:none;color:var(--text-muted);font-size:.8rem;cursor:pointer">← Back to plans</button>
+    </div>
   </div>
 </div>
 
@@ -519,116 +768,414 @@ const offers={free:{n:"Free Preview",p:"FREE",d:"50 MB",v:"15 mins"},daily:{n:"D
 let currentOffer="daily";
 let currentPayment="mpesa";
 
+// Push Google Ad — show fallback immediately if it errors
+function showAdFallback() {
+  const ad = document.getElementById('adsense-unit');
+  const fallback = document.getElementById('ad-fallback');
+  if (!ad || !fallback || fallback.style.display === 'block') return;
+  const adFilled = ad.getAttribute('data-ad-status') === 'filled';
+  if (!adFilled) {
+    ad.style.display = 'none';
+    fallback.style.display = 'block';
+  }
+}
+
+try {
+  (adsbygoogle = window.adsbygoogle || []).push({});
+} catch(e) {
+  showAdFallback();
+}
+
+// File:// URLs always return empty — show fallback immediately
+if (window.location.protocol === 'file:') {
+  showAdFallback();
+} else {
+  setTimeout(showAdFallback, 2000);
+}
+
+let cometReady = false;
+setTimeout(() => { cometReady = true; }, 800);
+
 function selectOffer(id){
-  currentOffer=id;
-  
-  // Update bubble effects on all bundle cards
-  const bundleIds = ['free', 'daily', 'weekly', 'monthly', 'lite', 'power'];
+  currentOffer = id;
+
+  // Card styles
+  const bundleIds = ['free','daily','weekly','monthly','lite','power'];
   bundleIds.forEach(bundleId => {
     const card = document.getElementById('bundle-' + bundleId);
-    if (card) {
-      if (bundleId === id) {
-        card.style.transform = 'scale(1.12) translateY(-8px)';
-        card.style.boxShadow = '0 8px 24px rgba(48,181,74,.25)';
-        card.style.border = '2px solid var(--saf-green)';
-        
-        // Scroll to center the selected card
-        setTimeout(() => {
-          const carousel = document.getElementById('carousel-scroll');
-          if (carousel && card) {
-            const cardRect = card.getBoundingClientRect();
-            const carouselRect = carousel.getBoundingClientRect();
-            const scrollLeft = carousel.scrollLeft;
-            const targetScroll = scrollLeft + (cardRect.left - carouselRect.left) - (carouselRect.width / 2) + (cardRect.width / 2);
-            carousel.scrollTo({ left: targetScroll, behavior: 'smooth' });
-          }
-        }, 50);
-      } else {
-        card.style.transform = 'scale(1)';
-        card.style.boxShadow = 'none';
-        card.style.border = '1px solid var(--border)';
-      }
+    if (!card) return;
+    if (bundleId === id) {
+      card.style.transform = 'scale(1.12)';
+      card.style.boxShadow = '0 8px 24px rgba(48,181,74,.25)';
+      card.style.border = '2px solid var(--saf-green)';
+      card.style.background = 'linear-gradient(135deg,rgba(48,181,74,.12),rgba(48,181,74,.04))';
+    } else {
+      card.style.transform = 'scale(0.92)';
+      card.style.boxShadow = 'none';
+      card.style.border = '1px solid var(--border)';
+      card.style.background = 'var(--bg-card)';
     }
   });
-  
-  // Update button text dynamically
-  const plans = {
-    free: { name: 'Free Preview', price: 'FREE', priceNum: 0 },
-    daily: { name: 'Day Pass', price: '20', priceNum: 20 },
-    weekly: { name: 'Week Pass', price: '99', priceNum: 99 },
-    monthly: { name: 'Month Pass', price: '299', priceNum: 299 },
-    lite: { name: 'Lite Streaming', price: '49', priceNum: 49 },
-    power: { name: 'Power Bundle', price: '699', priceNum: 699 }
-  };
-  
-  if (!plans[id]) return;
-  
-  const selected = plans[id];
-  const buttonText = document.getElementById('connect-btn-text');
-  
-  if (buttonText) {
-    if (selected.priceNum === 0) {
-      buttonText.textContent = 'Get Connected · FREE';
-    } else {
-      buttonText.textContent = 'Get Connected · KES ' + selected.price;
+
+  // Scroll to center
+  setTimeout(() => {
+    const carousel = document.getElementById('carousel-scroll');
+    const card = document.getElementById('bundle-' + id);
+    if (carousel && card) {
+      const cardRect = card.getBoundingClientRect();
+      const carouselRect = carousel.getBoundingClientRect();
+      const targetScroll = carousel.scrollLeft + (cardRect.left - carouselRect.left) - (carouselRect.width / 2) + (cardRect.width / 2);
+      carousel.scrollTo({ left: targetScroll, behavior: 'smooth' });
     }
+  }, 50);
+
+  // Button text
+  const plans = {
+    free:    { name:'Free Preview',   price:'FREE', priceNum:0   },
+    daily:   { name:'Day Pass',       price:'20',   priceNum:20  },
+    weekly:  { name:'Week Pass',      price:'99',   priceNum:99  },
+    monthly: { name:'Month Pass',     price:'299',  priceNum:299 },
+    lite:    { name:'Lite Streaming', price:'49',   priceNum:49  },
+    power:   { name:'Power Bundle',   price:'699',  priceNum:699 }
+  };
+  const sel = plans[id];
+  if (!sel) return;
+  const btnText = document.getElementById('connect-btn-text');
+  if (btnText) btnText.textContent = sel.priceNum === 0 ? 'Get Connected · FREE' : 'Get Connected · KES ' + sel.price;
+  window.selectedPlan = { plan: id, name: sel.name, price: sel.price };
+
+  // Fire comet only on user tap (not auto-init)
+  if (cometReady) fireComet(id);
+}
+
+function fireComet(plan) {
+  const card = document.getElementById('bundle-' + plan);
+  const btn  = document.getElementById('connect-btn');
+  if (!card || !btn) return;
+
+  const cR = card.getBoundingClientRect();
+  const bR = btn.getBoundingClientRect();
+
+  const sx = cR.left + cR.width  / 2;
+  const sy = cR.top  + cR.height / 2;
+  const ex = bR.left + bR.width  / 2;
+  const ey = bR.top  + bR.height / 2;
+  const cx = (sx + ex) / 2;
+  const cy = Math.min(sy, ey) - 120;
+
+  // HEAD
+  const head = document.createElement('div');
+  head.style.cssText = `position:fixed;z-index:999999;pointer-events:none;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 0 10px 5px #30B54A,0 0 30px 10px rgba(48,181,74,.6);transform:translate(-50%,-50%);left:${sx}px;top:${sy}px`;
+  document.body.appendChild(head);
+
+  // TAIL particles
+  const tails = Array.from({length:10}, (_,i) => {
+    const d = document.createElement('div');
+    const s = Math.max(2, 14 - i*1.2);
+    d.style.cssText = `position:fixed;z-index:999998;pointer-events:none;width:${s}px;height:${s}px;border-radius:50%;background:rgba(48,181,74,${0.9-i*0.08});transform:translate(-50%,-50%);left:${sx}px;top:${sy}px`;
+    document.body.appendChild(d);
+    return d;
+  });
+
+  // TRAIL SPARKS - left behind and fade out
+  const trailSparks = [];
+  let lastSparkTime = 0;
+
+  const hist = [];
+  const dur  = 600;
+  const t0   = performance.now();
+
+  (function loop(now) {
+    const p  = Math.min((now - t0) / dur, 1);
+    const ep = p < .5 ? 2*p*p : -1+(4-2*p)*p;
+    const mt = 1 - ep;
+    const x  = mt*mt*sx + 2*mt*ep*cx + ep*ep*ex;
+    const y  = mt*mt*sy + 2*mt*ep*cy + ep*ep*ey;
+
+    head.style.left = x + 'px';
+    head.style.top  = y + 'px';
+    head.style.opacity = p > .85 ? String(1-(p-.85)/.15) : '1';
+
+    hist.unshift({x, y});
+    if (hist.length > 30) hist.pop();
+
+    tails.forEach((t, i) => {
+      const h = hist[Math.min(i*2+1, hist.length-1)] || {x, y};
+      t.style.left    = h.x + 'px';
+      t.style.top     = h.y + 'px';
+      t.style.opacity = String(Math.max(0, (1 - i/10) * (1 - p*.3)));
+    });
+
+    // Drop trail sparks every 40ms
+    if (now - lastSparkTime > 40 && p < 0.9) {
+      lastSparkTime = now;
+      const spark = document.createElement('div');
+      const size  = 4 + Math.random() * 6;
+      spark.style.cssText = `
+        position:fixed;z-index:999997;pointer-events:none;
+        width:${size}px;height:${size}px;border-radius:50%;
+        background:radial-gradient(circle, #fff 0%, #30B54A 50%, transparent 100%);
+        box-shadow:0 0 6px 2px rgba(48,181,74,.6);
+        transform:translate(-50%,-50%);
+        left:${x + (Math.random()-0.5)*12}px;
+        top:${y + (Math.random()-0.5)*12}px;
+        transition:opacity 0.6s ease-out, transform 0.6s ease-out;
+        opacity:1;
+      `;
+      document.body.appendChild(spark);
+      trailSparks.push(spark);
+
+      // Fade out and drift
+      setTimeout(() => {
+        spark.style.opacity = '0';
+        spark.style.transform = `translate(-50%,-50%) scale(0.2)`;
+      }, 50);
+      setTimeout(() => spark.remove(), 700);
+    }
+
+    if (p < 1) { requestAnimationFrame(loop); return; }
+
+    head.remove();
+    tails.forEach(t => t.remove());
+
+    // Burst rings on impact
+    [0,1,2].forEach(i => {
+      const ring = document.createElement('div');
+      ring.style.cssText = `position:fixed;z-index:999999;pointer-events:none;border-radius:50%;border:3px solid rgba(48,181,74,${.9-i*.25});width:10px;height:10px;transform:translate(-50%,-50%);left:${ex}px;top:${ey}px;transition:all ${.4+i*.08}s ease-out`;
+      document.body.appendChild(ring);
+      setTimeout(() => {
+        ring.style.width  = `${80+i*20}px`;
+        ring.style.height = `${80+i*20}px`;
+        ring.style.opacity = '0';
+      }, 20);
+      setTimeout(() => ring.remove(), 600);
+    });
+
+    // Flash button then start pulsing rings
+    btn.style.transition = 'box-shadow .15s, transform .15s';
+    btn.style.boxShadow  = '0 0 0 10px rgba(48,181,74,.35), 0 0 50px rgba(48,181,74,.6)';
+    btn.style.transform  = 'scale(1.06)';
+    setTimeout(() => {
+      btn.style.boxShadow = '';
+      btn.style.transform = '';
+      startButtonRings(btn, ex, ey);
+    }, 400);
+
+  })(t0);
+}
+
+// Emit 3 successive rings from button then stop
+function startButtonRings(btn, cx, cy) {
+  let count = 0;
+  const max = 4;
+
+  function emitRing() {
+    if (count >= max) return;
+    count++;
+
+    const bR = btn.getBoundingClientRect();
+    const rx = bR.left + bR.width  / 2;
+    const ry = bR.top  + bR.height / 2;
+    const w  = bR.width;
+    const h  = bR.height;
+
+    const ring = document.createElement('div');
+    ring.style.cssText = `
+      position:fixed;z-index:99998;pointer-events:none;
+      border-radius:20px;
+      border:2px solid rgba(48,181,74,.8);
+      box-shadow:0 0 8px rgba(48,181,74,.4);
+      width:${w}px;height:${h}px;
+      transform:translate(-50%,-50%);
+      left:${rx}px;top:${ry}px;
+      opacity:1;
+      transition:width 1s ease-out, height 1s ease-out, opacity 1s ease-out;
+    `;
+    document.body.appendChild(ring);
+
+    setTimeout(() => {
+      ring.style.width   = `${w + 80}px`;
+      ring.style.height  = `${h + 46}px`;
+      ring.style.opacity = '0';
+    }, 30);
+
+    setTimeout(() => ring.remove(), 1100);
+    setTimeout(emitRing, 1000);
   }
-  
-  window.selectedPlan = { plan: id, name: selected.name, price: selected.price };
+
+  emitRing();
+}
+
+function closePaymentSheet(){
+  document.getElementById("payment-sheet").classList.add("hidden");
+  document.getElementById("connect-btn-container").style.display = "flex";
+  document.body.style.overflow = "auto";
+  document.getElementById("pay-loader").style.display = "none";
+  document.getElementById("loader-step").style.display = "";
+  document.getElementById("loader-sub").style.display  = "";
+}
+
+function selectPayment(type){
+  currentPayment = type;
+  ["mpesa","airtime"].forEach(t => {
+    const el = document.getElementById("payment-" + t);
+    const radio = el.querySelector(".radio");
+    if (t === type) {
+      el.classList.add("selected");
+      radio.style.borderColor = "var(--saf-green)";
+      radio.style.background  = "var(--saf-green)";
+    } else {
+      el.classList.remove("selected");
+      radio.style.borderColor = "var(--border)";
+      radio.style.background  = "";
+    }
+  });
+}
+
+function showScreen(id){
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById("screen-" + id).classList.add("active");
+  closePaymentSheet();
 }
 
 function openPaymentSheet(){
   document.getElementById("payment-sheet").classList.remove("hidden");
   document.getElementById("connect-btn-container").style.display = "none";
   document.body.style.overflow="hidden";
-  
-  // Use selectedPlan or default to daily
-  const selected = window.selectedPlan || { name: 'Day Pass', price: '20' };
-  
-  document.getElementById("sheet-plan").textContent = selected.name;
-  document.getElementById("sheet-data").textContent = selected.price + ' KES';
-  document.getElementById("sheet-price").textContent = selected.price;
-}
+  document.getElementById("pay-loader").style.display = "none";
+  document.getElementById("loader-success").style.display = "none";
 
-function closePaymentSheet(){
-  document.getElementById("payment-sheet").classList.add("hidden");
-  document.getElementById("connect-btn-container").style.display = "flex";
-  document.body.style.overflow="auto";
-}
+  const plans = {
+    free:    { name:'Free Preview',   data:'50 MB',  validity:'15 mins', price:'FREE' },
+    daily:   { name:'Day Pass',       data:'200 MB', validity:'24 hrs',  price:'KES 20' },
+    weekly:  { name:'Week Pass',      data:'1 GB',   validity:'7 days',  price:'KES 99' },
+    monthly: { name:'Month Pass',     data:'10 GB',  validity:'30 days', price:'KES 299' },
+    lite:    { name:'Lite Streaming', data:'500 MB', validity:'3 days',  price:'KES 49' },
+    power:   { name:'Power Bundle',   data:'25 GB',  validity:'30 days', price:'KES 699' }
+  };
 
-function selectPayment(type){
-  currentPayment=type;
-  ["mpesa","airtime"].forEach(t=>{
-    const e=document.getElementById("payment-"+t);
-    if(t===type){
-      e.classList.add("selected");
-    }else{
-      e.classList.remove("selected");
-    }
-  });
-  document.getElementById("mpesa-section").style.display=type==="mpesa"?"block":"none";
-}
+  const sel = plans[currentOffer] || plans.daily;
+  document.getElementById("sheet-plan").textContent     = sel.name;
+  document.getElementById("sheet-data").textContent     = sel.data;
+  document.getElementById("sheet-validity").textContent = sel.validity;
+  document.getElementById("sheet-price").textContent    = sel.price;
 
-function showScreen(id){
-  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-  document.getElementById("screen-"+id).classList.add("active");
-  closePaymentSheet();
+  // Simulate auto-detected MSISDN from header enrichment
+  // document.getElementById("sheet-msisdn").textContent = "+254 7XX XXX XXX";
 }
 
 function handlePay(){
-  if(currentPayment==="mpesa"){
-    const phone=document.getElementById("phone-input").value;
-    if(!phone){alert("Enter phone number");return}
+  const isMpesa = currentPayment === "mpesa";
+
+  // Set step labels based on payment method
+  if (isMpesa) {
+    document.getElementById("step-1-label").textContent = "STK Push sent to your phone";
+    document.getElementById("step-2-label").textContent = "Payment confirmed";
+    document.getElementById("step-3-label").textContent = "Activating your bundle";
+  } else {
+    document.getElementById("step-1-label").textContent = "Checking airtime balance";
+    document.getElementById("step-2-label").textContent = "Airtime deducted";
+    document.getElementById("step-3-label").textContent = "Activating your bundle";
   }
-  closePaymentSheet();
-  
-  setTimeout(()=>{
-    const o=offers[currentOffer];
-    document.getElementById("success-text").textContent="Your "+o.n+" is active. Enjoy unlimited access to your favourite apps!";
-    document.getElementById("stat-data").textContent=o.d;
-    showScreen("success");
-  },800);
+
+  // Show loader
+  const loader = document.getElementById("pay-loader");
+  loader.style.display = "flex";
+
+  // Reset steps
+  [1,2,3].forEach(i => {
+    const step = document.getElementById("step-"+i);
+    const icon = document.getElementById("step-"+i+"-icon");
+    step.style.opacity = "0.4";
+    icon.style.background = "";
+    icon.style.borderColor = "var(--border)";
+    icon.style.color = "var(--text-muted)";
+    icon.textContent = i;
+  });
+  document.getElementById("progress-bar").style.width = "0%";
+  document.getElementById("loader-step").textContent = isMpesa ? "Sending STK Push..." : "Checking your airtime...";
+  document.getElementById("loader-sub").textContent  = isMpesa ? "Check your phone to confirm" : "Please wait a moment";
+  document.getElementById("loader-success").style.display = "none";
+
+  function completeStep(i, label, sub, progress) {
+    const step = document.getElementById("step-"+i);
+    const icon = document.getElementById("step-"+i+"-icon");
+    step.style.opacity = "1";
+    icon.textContent   = "✓";
+    icon.style.background   = "rgba(48,181,74,.2)";
+    icon.style.borderColor  = "var(--saf-green)";
+    icon.style.color        = "#30B54A";
+    document.getElementById("loader-step").textContent = label;
+    document.getElementById("loader-sub").textContent  = sub;
+    document.getElementById("progress-bar").style.width = progress + "%";
+  }
+
+  if (isMpesa) {
+    setTimeout(() => completeStep(1, "Awaiting your confirmation...", "Enter your M-PESA PIN", 35), 1200);
+    setTimeout(() => completeStep(2, "Payment confirmed ✓", "Processing your bundle...", 70), 3000);
+    setTimeout(() => completeStep(3, "Bundle activated! 🎉", "You are now connected", 100), 4500);
+  } else {
+    setTimeout(() => completeStep(1, "Balance verified ✓", "Deducting airtime...", 35), 800);
+    setTimeout(() => completeStep(2, "Airtime deducted ✓", "Processing your bundle...", 70), 1800);
+    setTimeout(() => completeStep(3, "Bundle activated! 🎉", "You are now connected", 100), 3000);
+  }
+
+  // Show success
+  const successDelay = isMpesa ? 5200 : 3700;
+  setTimeout(() => {
+    document.getElementById("loader-step").style.display = "none";
+    document.getElementById("loader-sub").style.display  = "none";
+    document.getElementById("loader-success").style.display = "flex";
+  }, successDelay);
 }
+
+// Detect network dynamically
+(function(){
+  let detected = false;
+  
+  try {
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (conn) {
+      const type = conn.effectiveType;
+      const saveData = conn.saveData;
+      
+      let networkDisplay = '';
+      
+      // Detect connection type
+      if (conn.type === 'wifi') {
+        networkDisplay = 'WiFi Network';
+      } else if (conn.type === 'cellular') {
+        // Map effective type to actual network generation
+        if (type === '4g') networkDisplay = 'Mobile Network · 5G/LTE';
+        else if (type === '3g') networkDisplay = 'Mobile Network · 4G';
+        else if (type === '2g') networkDisplay = 'Mobile Network · 3G';
+        else networkDisplay = 'Mobile Network';
+      } else {
+        // Fallback based on effective type
+        if (type === '4g') networkDisplay = 'Network · 5G/LTE';
+        else if (type === '3g') networkDisplay = 'Network · 4G';
+        else if (type === '2g') networkDisplay = 'Network · 3G';
+        else networkDisplay = 'Network';
+      }
+      
+      document.getElementById('network-name').textContent = networkDisplay;
+      detected = true;
+    }
+  } catch(e) {}
+  
+  // If detection failed, show Unknown Connection
+  if (!detected) {
+    document.getElementById('network-name').textContent = 'Unknown Connection';
+  }
+  
+  // Try to get location if permitted
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      // In production, reverse geocode coordinates to get location name
+      // For now keep default but this shows we're trying
+    }, function() {});
+  }
+})();
 </script>
 </body>
 </html>
