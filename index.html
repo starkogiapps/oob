@@ -14,8 +14,56 @@
   --bg-base:#060E1A;--bg-card:#0D1B2E;--bg-card-hover:#112238;
   --border:rgba(48,181,74,0.18);--text-primary:#F0F6FF;
   --text-muted:#7A95B4;--text-dim:#4A6480;
+  --theme-toggle-bg:rgba(255,255,255,.08);
 }
-body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+[data-theme="light"]{
+  --bg-base:#EFEFEF;
+  --bg-card:#FFFFFF;
+  --bg-card-hover:#F5FFF7;
+  --border:rgba(0,0,0,0.1);
+  --text-primary:#1A1A1A;
+  --text-muted:#555555;
+  --text-dim:#999999;
+  --saf-green:#30B54A;
+  --saf-green-dark:#1A7A30;
+  --saf-green-subtle:rgba(48,181,74,0.08);
+  --saf-green-glow:rgba(48,181,74,0.15);
+  --theme-toggle-bg:#FFFFFF;
+}
+[data-theme="light"] body{background:#EFEFEF}
+[data-theme="light"] .grid-bg{background-color:#EFEFEF;background-image:linear-gradient(rgba(48,181,74,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(48,181,74,.06) 1px,transparent 1px)}
+[data-theme="light"] .bottom-sheet{background:#FFFFFF;box-shadow:0 -4px 32px rgba(0,0,0,.12)}
+[data-theme="light"] .sheet-header{background:#FFFFFF;border-bottom:1px solid #EEEEEE}
+[data-theme="light"] .sheet-close{color:#555}
+[data-theme="light"] .payment-option{background:#FFFFFF;border:2px solid #DDDDDD;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+[data-theme="light"] .payment-option:hover{border-color:var(--saf-green)}
+[data-theme="light"] .payment-option.selected{background:#F0FFF4;border:2px solid var(--saf-green)}
+[data-theme="light"] .payment-option.selected::before{opacity:1}
+[data-theme="light"] .payment-icon{background:#F5F5F5;border:1px solid #E8E8E8}
+[data-theme="light"] .radio{border-color:#CCCCCC}
+[data-theme="light"] #connect-btn-container{background:linear-gradient(to top,#EFEFEF 60%,transparent)}
+[data-theme="light"] #pay-loader{background:#FFFFFF}
+[data-theme="light"] .stat-val{color:var(--saf-green)}
+[data-theme="light"] .stat-lbl{color:#888}
+[data-theme="light"] .offer-card{background:#FFFFFF;border:1px solid #E8E8E8;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+[data-theme="light"] #theme-toggle{background:#FFFFFF;border:1px solid #DDDDDD;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+[data-theme="light"] .animate-fade-in{background:rgba(48,181,74,.1)!important;border-color:rgba(48,181,74,.25)!important}
+[data-theme="light"] .btn-primary{color:#FFFFFF!important}
+[data-theme="light"] .stat-box{background:#F8FFF9;border-radius:10px;padding:8px}
+[data-theme="light"] input[type=tel]{background:#F5F5F5;border-color:#DDDDDD;color:#1A1A1A}
+#step-1,#step-2,#step-3{display:flex!important;flex-direction:row!important;align-items:center!important}
+#step-1.step-hidden,#step-2.step-hidden,#step-3.step-hidden{display:none!important}
+body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;transition:background .3s ease,color .3s ease}
+
+/* Theme toggle button */
+#theme-toggle{
+  position:fixed;top:16px;right:16px;z-index:9999;
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--border);
+  background:var(--theme-toggle-bg);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;transition:all .3s ease;backdrop-filter:blur(8px);
+}
+#theme-toggle:hover{transform:scale(1.1);box-shadow:0 0 12px rgba(48,181,74,.3)}
 @keyframes signal-wave{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.4);opacity:0}}
 @keyframes slide-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fade-in{from{opacity:0}to{opacity:1}}
@@ -39,8 +87,7 @@ body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',-ap
 .signal-ring{animation:signal-wave 2s ease-out infinite;position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(48,181,74,.5)}
 .signal-ring-2{animation:signal-wave 2s ease-out .7s infinite;position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(48,181,74,.35)}
 .signal-ring-3{animation:signal-wave 2s ease-out 1.4s infinite;position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(48,181,74,.2)}
-.grid-bg{background-image:linear-gradient(rgba(48,181,74,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(48,181,74,.04) 1px,transparent 1px);background-size:32px 32px}
-.offer-card{background:var(--bg-card);border:1px solid var(--border);transition:all .3s cubic-bezier(.34,1.56,.64,1);border-radius:16px;padding:16px;cursor:pointer;text-align:left;width:100%;color:inherit;display:block;animation:bounce-in .6s ease-out backwards}
+.grid-bg{background-image:linear-gradient(rgba(48,181,74,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(48,181,74,.04) 1px,transparent 1px);background-size:32px 32px}border:1px solid var(--border);transition:all .3s cubic-bezier(.34,1.56,.64,1);border-radius:16px;padding:16px;cursor:pointer;text-align:left;width:100%;color:inherit;display:block;animation:bounce-in .6s ease-out backwards}
 .offer-card:nth-child(2){animation-delay:.1s}
 .offer-card:nth-child(3){animation-delay:.2s}
 .offer-card:nth-child(4){animation-delay:.3s}
@@ -77,13 +124,135 @@ body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',-ap
 .payment-option.selected .radio span{transform:scale(1)}
 .screen{display:none!important;position:absolute;inset:0;animation:fade-in .5s ease-out}
 .screen.active{display:flex!important;position:relative}
+
+/* ── DESKTOP LAYOUT ── */
+@media(min-width:900px){
+  body{overflow-x:hidden}
+
+  .grid-bg{
+    padding:32px 48px 48px!important;
+    align-items:center!important;
+  }
+
+  /* Full-width single column — no sidebar */
+  #screen-main{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    max-width:1100px!important;
+    width:100%!important;
+    margin:0 auto!important;
+    padding-bottom:20px!important;
+  }
+
+  .desktop-left{
+    display:flex!important;
+    flex-direction:column!important;
+    width:100%!important;
+    gap:0!important;
+  }
+
+  /* Hide desktop right panel — we don't need it for this layout */
+  .desktop-right{display:none!important}
+
+  /* Hide mobile fixed button */
+  #connect-btn-container{display:none!important}
+  .bottom-sheet{display:none!important}
+  #sheet-overlay{display:none!important}
+
+  /* Sponsored + network — full width, constrained */
+  #ad-container{max-width:100%!important;margin-bottom:20px!important}
+
+  /* ── PLANS WIREFRAME LAYOUT ──
+     Left: featured tall card (Day Pass)
+     Right: 2×2 grid of other plans
+  */
+  #carousel-scroll{
+    overflow:visible!important;
+    margin:0!important;
+    padding:0!important;
+    width:100%!important;
+  }
+
+  #carousel-scroll > div{
+    display:grid!important;
+    grid-template-columns:260px 1fr!important;
+    grid-template-rows:auto auto!important;
+    gap:16px!important;
+    width:100%!important;
+    padding:16px 0 24px!important;
+    align-items:start!important;
+  }
+
+  .bundle-spacer{display:none!important}
+
+  /* Day Pass — featured tall card, spans 2 rows on the left */
+  #bundle-daily{
+    grid-column:1!important;
+    grid-row:1 / 3!important;
+    width:100%!important;
+    min-width:unset!important;
+    min-height:280px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    padding:28px 24px!important;
+    font-size:1.05em!important;
+  }
+
+  /* Other cards — go into right 2×2 grid */
+  #bundle-free,#bundle-weekly,#bundle-monthly,
+  #bundle-lite,#bundle-power{
+    grid-column:2!important;
+    width:100%!important;
+    min-width:unset!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,1fr)!important;
+  }
+
+  /* Right side 5 cards in a 2-col grid */
+  #bundle-free    { order:1!important }
+  #bundle-weekly  { order:2!important }
+  #bundle-monthly { order:3!important }
+  #bundle-lite    { order:4!important }
+  #bundle-power   { order:5!important }
+
+  /* Override individual cards to be block not subgrid */
+  #bundle-free,#bundle-weekly,#bundle-monthly,
+  #bundle-lite,#bundle-power{
+    display:block!important;
+  }
+
+  /* Wrap the right cards in a subgrid */
+  #carousel-right-grid{
+    grid-column:2!important;
+    grid-row:1 / 3!important;
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:12px!important;
+  }
+
+  /* Confirm button full width below plans */
+  #desktop-confirm-bar{display:flex!important}
+}
+
+@media(max-width:899px){
+  .desktop-right{display:none!important}
+  .desktop-left{display:contents!important}
+  #desktop-confirm-bar{display:none!important}
+  #carousel-right-grid{display:contents!important}
+}
 </style>
 </head>
 <body>
+
+<button id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
+
 <div class="grid-bg" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:32px 16px;padding-bottom:100px;margin-bottom:80px">
 
   <!-- MAIN SCREEN -->
   <div id="screen-main" class="screen active" style="flex:1;width:100%;display:flex;flex-direction:column;align-items:center;padding-bottom:90px">
+  <div class="desktop-left" style="width:100%">
     
     <!-- Top Banner Ad -->
     <div style="width:100%;margin-bottom:28px" id="ad-container">
@@ -96,7 +265,7 @@ body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',-ap
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
       <!-- Fallback — shown if AdSense doesn't fill -->
-      <div id="ad-fallback" style="display:none;width:100%;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#1A6B28 0%,#0f3d18 100%);border:1px solid rgba(48,181,74,.3);cursor:pointer" onclick="selectOffer('monthly');document.getElementById('plans-modal').style.display='flex'">
+      <div id="ad-fallback" style="display:none;width:100%;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#1A6B28 0%,#0f3d18 100%);border:1px solid rgba(48,181,74,.3);cursor:pointer" onclick="selectOffer('monthly',true);fireComet('monthly',this)">
         <div style="padding:16px 20px;display:flex;align-items:center;gap:16px">
           <div style="flex-shrink:0;width:52px;height:52px;border-radius:14px;background:rgba(48,181,74,.2);border:1px solid rgba(48,181,74,.35);display:flex;align-items:center;justify-content:center">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#30B54A" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -108,7 +277,7 @@ body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',-ap
           </div>
           <div style="flex-shrink:0;text-align:right">
             <div style="font-weight:800;font-size:1.1rem;color:#A8FF3E;letter-spacing:-.02em">KES 299</div>
-            <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-top:2px">Tap to select</div>
+            <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-top:2px">Tap to connect</div>
           </div>
         </div>
         <div style="height:3px;background:linear-gradient(90deg,#30B54A,#A8FF3E,#30B54A);animation:shimmer 2s linear infinite;background-size:200% 100%"></div>
@@ -301,8 +470,91 @@ body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',-ap
       <div id="discover-content" style="width:100%;min-height:280px"></div>
     </div>
   </div>
+  </div><!-- end desktop-left -->
 
-  <!-- Fixed Pay & Connect Button -->
+  <!-- DESKTOP RIGHT: Sticky payment panel -->
+  <div class="desktop-right" id="desktop-payment-panel" style="display:none;flex-direction:column">
+    <div style="background:var(--bg-card);border-radius:20px;border:1px solid var(--border);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)">
+
+      <!-- Plan summary -->
+      <div style="padding:20px 20px 0">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px">Get Connected</div>
+        <div style="background:var(--bg-base);border-radius:14px;padding:16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--border)">
+          <div>
+            <div style="font-size:.68rem;color:var(--text-muted);margin-bottom:3px;letter-spacing:.04em;text-transform:uppercase">Selected Plan</div>
+            <div id="desktop-plan-name" style="font-weight:800;font-size:1rem;color:var(--text-primary)">Day Pass</div>
+            <div id="desktop-plan-detail" style="font-size:.75rem;color:var(--text-muted);margin-top:2px">200 MB · 24h</div>
+          </div>
+          <div id="desktop-plan-price" style="font-weight:900;font-size:1.4rem;color:var(--saf-green);letter-spacing:-.03em">KES 20</div>
+        </div>
+      </div>
+
+      <!-- Payment options -->
+      <div style="padding:0 20px 16px">
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px">Pay with</div>
+        <div class="payment-option selected" id="desktop-payment-mpesa" onclick="selectDesktopPayment('mpesa')" style="margin-bottom:8px">
+          <div class="payment-icon">📱</div>
+          <div style="flex:1"><div style="font-weight:600;font-size:.85rem;color:var(--text-primary)">M-PESA</div><div style="font-size:.7rem;color:var(--text-muted)">STK push to your phone</div></div>
+          <div class="radio"><span></span></div>
+        </div>
+        <div class="payment-option" id="desktop-payment-airtime" onclick="selectDesktopPayment('airtime')" style="margin-bottom:16px">
+          <div class="payment-icon">📡</div>
+          <div style="flex:1"><div style="font-weight:600;font-size:.85rem;color:var(--text-primary)">Airtime Balance</div><div style="font-size:.7rem;color:var(--text-muted)">Deduct from your balance</div></div>
+          <div class="radio"><span></span></div>
+        </div>
+        <button class="btn-primary" onclick="handleDesktopPay()" id="desktop-confirm-btn" style="width:100%;border-radius:14px;padding:15px;font-size:.9rem;font-weight:700">⚡ Confirm Payment →</button>
+      </div>
+
+      <!-- Desktop loader -->
+      <div id="desktop-pay-loader" style="display:none;padding:24px 20px 28px;flex-direction:column;align-items:center;text-align:center">
+        <div id="desktop-loader-spinner" style="position:relative;width:72px;height:72px;margin:0 auto 14px">
+          <svg width="72" height="72" viewBox="0 0 72 72" style="position:absolute;inset:0;animation:spin 1.6s linear infinite">
+            <circle cx="36" cy="36" r="30" fill="none" stroke="rgba(48,181,74,.12)" stroke-width="4"/>
+            <circle cx="36" cy="36" r="30" fill="none" stroke="#30B54A" stroke-width="4" stroke-linecap="round" stroke-dasharray="45 145" style="filter:drop-shadow(0 0 6px #30B54A)"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px">📱</div>
+        </div>
+        <div id="desktop-loader-step" style="font-size:.9rem;font-weight:700;color:var(--text-primary);margin-bottom:3px">Processing...</div>
+        <div id="desktop-loader-sub" style="font-size:.72rem;color:var(--text-muted);margin-bottom:12px">Please wait</div>
+        <div style="width:100%;height:3px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:14px">
+          <div id="desktop-progress-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#30B54A,#A8FF3E);border-radius:4px;transition:width .5s ease"></div>
+        </div>
+        <div style="width:100%;display:flex;flex-direction:column;gap:8px">
+          <div id="desktop-step-1" style="display:flex;flex-direction:row;align-items:center;gap:10px;opacity:.4;transition:all .4s ease">
+            <div id="desktop-step-1-icon" style="min-width:26px;width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">1</div>
+            <p id="desktop-step-1-label" style="margin:0;font-size:.8rem;color:var(--text-muted)">Initiating payment</p>
+          </div>
+          <div id="desktop-step-2" style="display:flex;flex-direction:row;align-items:center;gap:10px;opacity:.4;transition:all .4s ease">
+            <div id="desktop-step-2-icon" style="min-width:26px;width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">2</div>
+            <p id="desktop-step-2-label" style="margin:0;font-size:.8rem;color:var(--text-muted)">Payment confirmed</p>
+          </div>
+          <div id="desktop-step-3" style="display:flex;flex-direction:row;align-items:center;gap:10px;opacity:.4;transition:all .4s ease">
+            <div id="desktop-step-3-icon" style="min-width:26px;width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">3</div>
+            <p id="desktop-step-3-label" style="margin:0;font-size:.8rem;color:var(--text-muted)">Activating your bundle</p>
+          </div>
+        </div>
+        <div id="desktop-loader-success" style="display:none;flex-direction:column;align-items:center;gap:12px;width:100%;padding-top:16px">
+          <div style="width:56px;height:56px;border-radius:50%;background:rgba(48,181,74,.12);border:2px solid var(--saf-green);display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--saf-green);animation:checkmark-pop .5s cubic-bezier(.34,1.56,.64,1)">✓</div>
+          <div><div style="font-size:.95rem;font-weight:800;color:var(--text-primary);margin-bottom:2px">You're Connected! 🎉</div><div style="font-size:.72rem;color:var(--text-muted)">Bundle activated successfully</div></div>
+          <button onclick="window.location.href='https://baze.co.ke'" style="width:100%;background:linear-gradient(135deg,#30B54A,#1A8F36);color:white;border:none;padding:13px;border-radius:12px;font-weight:700;font-size:.88rem;cursor:pointer">🎬 Start Browsing on Baze →</button>
+          <button onclick="resetDesktopPanel()" style="background:none;border:none;color:var(--text-muted);font-size:.78rem;cursor:pointer;padding:4px">← Back to plans</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social proof on desktop -->
+    <div style="display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--bg-card);border-radius:12px;border:1px solid var(--border)">
+      <div style="display:flex">
+        <div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#FF6B35,#F7C59F);border:2px solid var(--bg-card);margin-right:-5px;font-size:10px;display:flex;align-items:center;justify-content:center">👤</div>
+        <div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#30B54A,#1A8F36);border:2px solid var(--bg-card);margin-right:-5px;font-size:10px;display:flex;align-items:center;justify-content:center">👤</div>
+        <div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#4ECDC4,#44A08D);border:2px solid var(--bg-card);font-size:10px;display:flex;align-items:center;justify-content:center">👤</div>
+      </div>
+      <div style="font-size:.72rem;color:var(--text-muted)"><span id="desktop-social-count" style="font-weight:700;color:var(--saf-green)">1,284</span> connected in the last hour</div>
+      <div style="width:6px;height:6px;border-radius:50%;background:#30B54A;animation:glow-pulse 1.5s ease-in-out infinite;margin-left:auto;flex-shrink:0"></div>
+    </div>
+  </div><!-- end desktop-right -->
+
+  <!-- Fixed Pay & Connect Button (mobile only) -->
   <div id="connect-btn-container" style="position:fixed;bottom:0;left:0;right:0;width:100%;border-radius:0;padding:8px 16px 16px 16px;display:flex;align-items:center;justify-content:center;z-index:500;background:linear-gradient(to top, var(--bg-base) 60%, transparent);pointer-events:none">
     <button class="btn-primary" id="connect-btn" onclick="openPaymentSheet()" style="width:100%;max-width:380px;background:linear-gradient(135deg,#30B54A 0%,#1A8F36 100%);color:white;font-weight:600;letter-spacing:.01em;padding:16px 24px;border-radius:16px;box-shadow:0 4px 24px rgba(48,181,74,.35);display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;border:none;transition:all .2s ease;font-size:.875rem;pointer-events:auto">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="white"/></svg>
@@ -829,7 +1081,7 @@ let currentPayment="mpesa";
 let cometReady = false;
 setTimeout(() => { cometReady = true; }, 800);
 
-function selectOffer(id){
+function selectOffer(id, skipComet){
   currentOffer = id;
 
   // Card styles
@@ -877,12 +1129,25 @@ function selectOffer(id){
   if (btnText) btnText.textContent = sel.priceNum === 0 ? '⚡ Yes, Connect Me Now · FREE' : '⚡ Yes, Connect Me Now · KES ' + sel.price;
   window.selectedPlan = { plan: id, name: sel.name, price: sel.price };
 
-  // Fire comet only on user tap (not auto-init)
-  if (cometReady) fireComet(id);
+  // Fire comet — no delay if card visible on screen, 350ms if needs scroll
+  if (cometReady && !skipComet) {
+    const carousel = document.getElementById('carousel-scroll');
+    const card = document.getElementById('bundle-' + id);
+    let needsScroll = false;
+    if (carousel && card) {
+      const cardRect = card.getBoundingClientRect();
+      const carouselRect = carousel.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const carouselCenter = carouselRect.left + carouselRect.width / 2;
+      const isVisible = cardRect.left >= carouselRect.left && cardRect.right <= carouselRect.right;
+      needsScroll = !isVisible || Math.abs(cardCenter - carouselCenter) > 20;
+    }
+    setTimeout(() => fireComet(id), needsScroll ? 350 : 0);
+  }
 }
 
-function fireComet(plan) {
-  const card = document.getElementById('bundle-' + plan);
+function fireComet(plan, sourceEl) {
+  const card = sourceEl || document.getElementById('bundle-' + plan);
   const btn  = document.getElementById('connect-btn');
   if (!card || !btn) return;
 
@@ -1134,48 +1399,52 @@ function startButtonRings(btn, cx, cy) {
   emitRing();
 }
 
-function openPaymentSheet(){
-  const plans = {
-    free: { name: 'Free Preview', price: 'FREE', priceNum: 0 },
-    daily: { name: 'Day Pass', price: '20', priceNum: 20 },
-    weekly: { name: 'Week Pass', price: '99', priceNum: 99 },
-    monthly: { name: 'Month Pass', price: '299', priceNum: 299 },
-    lite: { name: 'Lite Streaming', price: '49', priceNum: 49 },
-    power: { name: 'Power Bundle', price: '699', priceNum: 699 }
-  };
-  
-  if (!plans[id]) return;
-  
-  const selected = plans[id];
-  const buttonText = document.getElementById('connect-btn-text');
-  
-  if (buttonText) {
-    if (selected.priceNum === 0) {
-      buttonText.textContent = '⚡ Yes, Connect Me Now · FREE';
-    } else {
-      buttonText.textContent = '⚡ Yes, Connect Me Now · KES ' + selected.price;
-    }
-  }
-  
-  window.selectedPlan = { plan: id, name: selected.name, price: selected.price };
-}
 
 function openPaymentSheet(){
   document.getElementById("payment-sheet").classList.remove("hidden");
   document.getElementById("sheet-overlay").style.display = "block";
   document.body.style.overflow="hidden";
-  // Reset loader fully
-  const loader = document.getElementById("pay-loader");
 
-  
-  // Always reset payment selection to M-PESA on open
+  // Full reset — hide loader, show payment options
+  const loader = document.getElementById("pay-loader");
+  loader.style.display = "none";
+
+  // Reset all loader children visibility
+  const spinner = document.getElementById("loader-spinner");
+  const lStep   = document.getElementById("loader-step");
+  const lSub    = document.getElementById("loader-sub");
+  const pBar    = document.getElementById("progress-bar");
+  const success = document.getElementById("loader-success");
+  if (spinner) { spinner.style.display = ''; spinner.style.opacity = '1'; }
+  if (lStep)   { lStep.style.display = ''; lStep.style.opacity = '1'; }
+  if (lSub)    { lSub.style.display = '';  lSub.style.opacity = '1'; }
+  if (pBar)    { pBar.parentElement.style.display = ''; pBar.parentElement.style.opacity = '1'; pBar.style.width = '0%'; }
+  if (success) { success.style.display = 'none'; }
+  [1,2,3].forEach(i => {
+    const s = document.getElementById('step-'+i);
+    const ic = document.getElementById('step-'+i+'-icon');
+    const lb = document.getElementById('step-'+i+'-label');
+    if (s)  { s.classList.remove('step-hidden'); s.style.opacity = '0.4'; }
+    if (ic) { ic.style.cssText = 'min-width:30px;width:30px;height:30px;border-radius:50%;border:2px solid rgba(255,255,255,.15);background:transparent;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text-dim);flex-shrink:0'; ic.textContent = i; }
+    if (lb) { lb.style.color = ''; lb.style.fontWeight = ''; }
+  });
+
+  // Also show confirm button, hide any lingering state
+  const confirmBtn = document.getElementById("confirm-pay-btn");
+  const backBtn    = document.getElementById("back-btn");
+  if (confirmBtn) confirmBtn.style.display = '';
+  if (backBtn)    backBtn.style.display = '';
+
+  // Reset payment to M-PESA
   currentPayment = 'mpesa';
   selectPayment('mpesa');
+
+  // Populate plan info
   const selected = window.selectedPlan || { name: 'Day Pass', price: '20' };
-  
-  document.getElementById("sheet-plan").textContent = selected.name;
-  document.getElementById("sheet-data").textContent = selected.price + ' KES';
-  document.getElementById("sheet-price").textContent = selected.price;
+  const planDetails = {free:'50 MB · 15 min',daily:'200 MB · 24h',weekly:'1 GB · 7 days',monthly:'10 GB · 30 days',lite:'500 MB · 3 days',power:'25 GB · 30 days'};
+  document.getElementById("sheet-plan").textContent  = selected.name;
+  document.getElementById("sheet-data").textContent  = planDetails[selected.plan] || (selected.price + ' KES');
+  document.getElementById("sheet-price").textContent = selected.price === 'FREE' ? 'FREE' : 'KES ' + selected.price;
 }
 
 function closePaymentSheet(){
@@ -1235,9 +1504,13 @@ function handlePay(){
     const icon = document.getElementById('step-'+i+'-icon');
     const lbl  = document.getElementById('step-'+i+'-label');
     step.style.opacity = '1';
+    step.style.display = 'flex';
+    step.style.flexDirection = 'row';
+    step.style.alignItems = 'center';
     step.style.background = 'rgba(48,181,74,.06)';
+    step.style.borderRadius = '10px';
+    icon.style.cssText = 'min-width:30px;width:30px;height:30px;border-radius:50%;border:2px solid var(--saf-green);background:rgba(48,181,74,.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#30B54A;flex-shrink:0;box-shadow:0 0 8px rgba(48,181,74,.4)';
     icon.textContent = '✓';
-    icon.style.cssText = 'min-width:30px;width:30px;height:30px;border-radius:50%;border:2px solid var(--saf-green);background:rgba(48,181,74,.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#30B54A;flex-shrink:0;box-shadow:0 0 8px rgba(48,181,74,.4);transition:all .4s ease';
     if (lbl) { lbl.style.color = 'var(--text-primary)'; lbl.style.fontWeight = '600'; }
     document.getElementById('loader-step').textContent = label;
     document.getElementById('loader-sub').textContent  = sub;
@@ -1258,14 +1531,25 @@ function handlePay(){
 }
 
 function showSuccess() {
-  document.getElementById('loader-spinner').style.display = 'none';
-  document.getElementById('loader-step').style.display = 'none';
-  document.getElementById('loader-sub').style.display  = 'none';
-  document.getElementById('progress-bar').parentElement.style.display = 'none';
-  document.getElementById('step-1').style.display = 'none';
-  document.getElementById('step-2').style.display = 'none';
-  document.getElementById('step-3').style.display = 'none';
-  document.getElementById('loader-success').style.display = 'flex';
+  // Hide everything immediately — no fade, no delay
+  ['loader-spinner','loader-step','loader-sub'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  const pb = document.getElementById('progress-bar');
+  if (pb) pb.parentElement.style.display = 'none';
+
+  [1,2,3].forEach(i => {
+    const el = document.getElementById('step-'+i);
+    if (el) el.classList.add('step-hidden');
+  });
+
+  // Fade in success
+  const s = document.getElementById('loader-success');
+  s.style.opacity = '0';
+  s.style.display = 'flex';
+  s.style.transition = 'opacity .5s ease';
+  setTimeout(() => { s.style.opacity = '1'; }, 30);
 }
 
 // Detect network dynamically
@@ -1315,6 +1599,141 @@ function showSuccess() {
     }, function() {});
   }
 })();
+
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn  = document.getElementById('theme-toggle');
+  const isLight = html.getAttribute('data-theme') === 'light';
+  if (isLight) {
+    html.removeAttribute('data-theme');
+    if (btn) btn.textContent = '🌙';
+    try { localStorage.setItem('portal-theme', 'dark'); } catch(e) {}
+  } else {
+    html.setAttribute('data-theme', 'light');
+    if (btn) btn.textContent = '☀️';
+    try { localStorage.setItem('portal-theme', 'light'); } catch(e) {}
+  }
+}
+
+// Apply saved theme on load
+(function(){
+  try {
+    const saved = localStorage.getItem('portal-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const btn = document.getElementById('theme-toggle');
+    if (saved === 'light' || (!saved && !prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'light');
+      if (btn) btn.textContent = '☀️';
+    }
+  } catch(e) {}
+})();
+
+// ── DESKTOP PANEL JS ──
+let desktopPayment = 'mpesa';
+
+// On desktop, openPaymentSheet should do nothing (panel is always visible)
+const _origOpenPaymentSheet = window.openPaymentSheet;
+window.openPaymentSheet = function() {
+  if (window.innerWidth >= 900) {
+    // Desktop: panel already visible, just scroll to it
+    const panel = document.getElementById('desktop-payment-panel');
+    if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return;
+  }
+  _origOpenPaymentSheet();
+};
+
+function selectDesktopPayment(type) {
+  desktopPayment = type;
+  ['mpesa','airtime'].forEach(t => {
+    document.getElementById('desktop-payment-'+t).classList[t===type?'add':'remove']('selected');
+  });
+}
+
+// Sync desktop panel when plan selected
+const _origSelectOffer = window.selectOffer;
+window.selectOffer = function(id, skipComet) {
+  _origSelectOffer(id, skipComet);
+  const details = {free:'50 MB · 15 min',daily:'200 MB · 24h',weekly:'1 GB · 7 days',monthly:'10 GB · 30 days',lite:'500 MB · 3 days',power:'25 GB · 30 days'};
+  const prices  = {free:'FREE',daily:'KES 20',weekly:'KES 99',monthly:'KES 299',lite:'KES 49',power:'KES 699'};
+  const names   = {free:'Free Preview',daily:'Day Pass',weekly:'Week Pass',monthly:'Month Pass',lite:'Lite Streaming',power:'Power Bundle'};
+  const dn = document.getElementById('desktop-plan-name');
+  const dd = document.getElementById('desktop-plan-detail');
+  const dp = document.getElementById('desktop-plan-price');
+  if (dn) dn.textContent = names[id] || id;
+  if (dd) dd.textContent = details[id] || '';
+  if (dp) dp.textContent = prices[id] || '';
+  // Sync desktop social count
+  const dsc = document.getElementById('desktop-social-count');
+  const sc  = document.getElementById('social-count');
+  if (dsc && sc) dsc.textContent = sc.textContent;
+};
+
+function handleDesktopPay() {
+  const isMpesa = desktopPayment === 'mpesa';
+  document.getElementById('desktop-confirm-btn').style.display = 'none';
+  document.getElementById('desktop-payment-mpesa').style.display = 'none';
+  document.getElementById('desktop-payment-airtime').style.display = 'none';
+  document.getElementById('desktop-pay-loader').style.display = 'flex';
+
+  document.getElementById('desktop-step-1-label').textContent = isMpesa ? 'STK Push sent to your phone' : 'Checking airtime balance';
+  document.getElementById('desktop-step-2-label').textContent = isMpesa ? 'Payment confirmed' : 'Airtime deducted';
+  document.getElementById('desktop-loader-step').textContent  = isMpesa ? 'Sending STK Push...' : 'Checking your airtime...';
+  document.getElementById('desktop-loader-sub').textContent   = isMpesa ? 'Check your phone to confirm' : 'Please wait';
+  document.getElementById('desktop-progress-bar').style.width = '0%';
+  document.getElementById('desktop-loader-success').style.display = 'none';
+  [1,2,3].forEach(i => {
+    document.getElementById('desktop-step-'+i).style.opacity = '.4';
+    const ic = document.getElementById('desktop-step-'+i+'-icon');
+    ic.textContent = i; ic.style.cssText = 'min-width:26px;width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0';
+  });
+
+  function dStep(i, label, sub, pct) {
+    document.getElementById('desktop-step-'+i).style.opacity = '1';
+    const ic = document.getElementById('desktop-step-'+i+'-icon');
+    ic.textContent = '✓'; ic.style.cssText = 'min-width:26px;width:26px;height:26px;border-radius:50%;border:2px solid var(--saf-green);background:rgba(48,181,74,.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#30B54A;flex-shrink:0;box-shadow:0 0 8px rgba(48,181,74,.4)';
+    document.getElementById('desktop-step-'+i+'-label').style.color = 'var(--text-primary)';
+    document.getElementById('desktop-loader-step').textContent = label;
+    document.getElementById('desktop-loader-sub').textContent  = sub;
+    document.getElementById('desktop-progress-bar').style.width = pct + '%';
+  }
+
+  if (isMpesa) {
+    setTimeout(() => dStep(1,'Awaiting confirmation...','Enter M-PESA PIN',35), 1200);
+    setTimeout(() => dStep(2,'Payment confirmed ✓','Processing bundle...',70), 3000);
+    setTimeout(() => dStep(3,'Bundle activated! 🎉','You are connected',100), 4500);
+    setTimeout(showDesktopSuccess, 5200);
+  } else {
+    setTimeout(() => dStep(1,'Balance verified ✓','Deducting airtime...',35), 800);
+    setTimeout(() => dStep(2,'Airtime deducted ✓','Processing bundle...',70), 1800);
+    setTimeout(() => dStep(3,'Bundle activated! 🎉','You are connected',100), 3000);
+    setTimeout(showDesktopSuccess, 3700);
+  }
+}
+
+function showDesktopSuccess() {
+  ['desktop-loader-spinner','desktop-loader-step','desktop-loader-sub'].forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
+  document.getElementById('desktop-progress-bar').parentElement.style.display = 'none';
+  [1,2,3].forEach(i => { const el=document.getElementById('desktop-step-'+i); if(el) el.style.display='none'; });
+  const s = document.getElementById('desktop-loader-success');
+  s.style.opacity='0'; s.style.display='flex';
+  setTimeout(()=>{ s.style.transition='opacity .5s'; s.style.opacity='1'; }, 30);
+}
+
+function resetDesktopPanel() {
+  document.getElementById('desktop-pay-loader').style.display = 'none';
+  document.getElementById('desktop-confirm-btn').style.display = '';
+  document.getElementById('desktop-payment-mpesa').style.display = '';
+  document.getElementById('desktop-payment-airtime').style.display = '';
+  ['desktop-loader-spinner','desktop-loader-step','desktop-loader-sub'].forEach(id => { const el=document.getElementById(id); if(el) { el.style.display=''; el.style.opacity='1'; } });
+  document.getElementById('desktop-progress-bar').parentElement.style.display = '';
+  document.getElementById('desktop-progress-bar').style.width = '0%';
+  document.getElementById('desktop-loader-success').style.display = 'none';
+  [1,2,3].forEach(i => { const el=document.getElementById('desktop-step-'+i); if(el) { el.style.display=''; el.style.opacity='.4'; } });
+  desktopPayment = 'mpesa';
+  selectDesktopPayment('mpesa');
+}
 </script>
 </body>
 </html>
